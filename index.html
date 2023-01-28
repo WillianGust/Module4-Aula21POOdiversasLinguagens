@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Static Template</title>
+  </head>
+  <body>
+   <script>
+     Aluno = class{
+       constructor(){
+         this.nome = "";
+         this.matricula = "";
+         this.notas = [];
+       }
+       media(){
+         if(this.notas.length == 0) return 0;
+         var somaNotas = this.notas.reduce((x,y) => x+y);
+         return somaNotas / this.notas.length;
+       }
+     }
+     arrayAluno =[]
+     const numAlunos = Number(prompt("Qual o numero de alunos?"))
+     const notaAlunos = Number(prompt("Quantas notas tem cada aluno?"))
+
+  
+     for(let i=0;i<numAlunos;i++){
+      let aluno = new Aluno()
+      aluno.nome = prompt("Qual o nome do aluno?")
+      aluno.matricula = prompt("Qual o numero de matricula?")
+      for(let j=0;j<notaAlunos;j++){
+        aluno.notas.push(Number(prompt(`Qual a nota ${j+1} do aluno?`)))
+      }
+      arrayAluno.push(aluno)
+     }
+      
+      for(const aluno of arrayAluno){
+        alert(`A media do ${aluno.nome} com matricula ${aluno.matricula} foi de ${aluno.media()}`)
+      }
+
+      let s = 0
+      for(let i=0;i<arrayAluno.length;i++){
+        for(let j=0;j<arrayAluno[i].length;j++){
+          s += arrayAluno[i].notas[j]
+        }
+      }
+      alert(`A media geral ${Math.round(s / (numAlunos*notaAlunos))}`)
+
+    //  alert("A media da aluna " + will.nome + " foi de : " + will.media());
+
+    //  meg = new Aluno();
+    //  meg.nome = "Mag Dantas";
+    //  meg.matricula = "1234567";
+    //  meg.notas = [1,2];
+    //  alert("A media da aluna " + meg.nome + " foi de : " + meg.media());
+
+    //  wand = new Aluno();
+    //  wand.nome = "Wand";
+    //  wand.matricula = "7890";
+    //  wand.notas = [1,4];
+    //  alert("A media da aluna " + wand.nome + " foi de : " + wand.media());
+
+    //  will = new Aluno();
+    //  will.nome = "Will";
+    //  will.matricula = "1011";
+    //  will.notas = [1,5];
+
+   </script>
+  </body>
+</html>
